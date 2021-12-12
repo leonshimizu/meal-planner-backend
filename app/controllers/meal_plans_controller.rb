@@ -6,7 +6,7 @@ class MealPlansController < ApplicationController
 
   def create
     meal_plans = MealPlan.all 
-    meal_plans.delete_all
+    meal_plans.delete_all # deletes all meal plans before adding the new meal plan
 
     meal_plan = MealPlan.new(
       diet: params[:diet],

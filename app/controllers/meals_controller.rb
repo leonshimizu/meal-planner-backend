@@ -6,7 +6,7 @@ class MealsController < ApplicationController
 
   def create
     meals = Meal.all 
-    meals.delete_all # deletes all meals before creating the new mealplans
+    meals.delete_all # deletes all meals before adding the new meals
 
     days_of_week = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
     meal_types = ["breakfast", "lunch", "dinner"]
@@ -41,6 +41,4 @@ class MealsController < ApplicationController
     render json: meal.as_json
   end
 
-  def save
-  end
 end
