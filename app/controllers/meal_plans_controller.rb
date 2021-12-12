@@ -24,4 +24,4 @@ class MealPlansController < ApplicationController
     week = meal_plan["week"]
     render json: week.as_json
   end
-end
+end 
