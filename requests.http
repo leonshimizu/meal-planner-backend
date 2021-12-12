@@ -1,0 +1,65 @@
+# @jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2Mzc3NzIyMjV9.ajPAezqNrJ_vY29hg6gYpSoDIHTvYZ1k4JMHV0e1EfI"
+
+### Users Index
+GET http://localhost:3000/users.json
+
+### Users create (signup)
+POST http://localhost:3000/users.json
+Content-Type: application/json
+
+{
+  "name": "Stassie",
+  "email": "stassie@gmail.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+### Sessions create (login) - broken at the moment
+POST http://localhost:3000/sessions.json
+Content-Type: application/json
+
+{
+  "email": "stassie@gmail.com",
+  "password": "password"
+}
+
+### MealPlans Index
+GET http://localhost:3000/meal_plans.json
+
+### MealPlans Create
+POST http://localhost:3000/meal_plans.json
+content-type: application/json 
+
+{
+  "diet": "test diet",
+  "allergies": "test allergies",
+  "timeFrame": "test time frame",
+  "calories": "test calories"
+}
+
+### MealPlans Generate
+GET http://localhost:3000/meal_plans_generate?diet=vegetarian&calories=1500&allergies=peanut
+
+### MealPlans Save
+POST http://localhost:3000/meal_plans_generate
+
+### Meals Index
+Get http://localhost:3000/meals.json
+
+### Meals Create
+POST http://localhost:3000/meals.json
+content-type: application/json 
+
+{
+  "meal_plan_id": 1,
+  "user_id": 1,
+  "recipe_id": 1,
+  "day_of_week": "test day of week",
+  "meal_type": "test meal type"
+}
+
+### Meals Generate
+GET http://localhost:3000/meals_generate?meal1=139875&meal2=159308&meal3=321254
+
+### Meals Save
+POST http://localhost:3000/meal_plans_generate
