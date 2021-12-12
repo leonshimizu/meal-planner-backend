@@ -5,6 +5,9 @@ class MealPlansController < ApplicationController
   end
 
   def create
+    meal_plans = MealPlan.all 
+    meal_plans.delete_all
+
     meal_plan = MealPlan.new(
       diet: params[:diet],
       allergies: params[:allergies],

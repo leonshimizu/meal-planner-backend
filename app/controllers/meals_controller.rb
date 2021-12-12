@@ -5,6 +5,9 @@ class MealsController < ApplicationController
   end
 
   def create
+    meals = Meal.all 
+    meals.delete_all # deletes all meals before creating the new mealplans
+
     days_of_week = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
     meal_types = ["breakfast", "lunch", "dinner"]
 
