@@ -5,108 +5,30 @@ class MealsController < ApplicationController
   end
 
   def create
-    # meal = Meal.new(
-    #   meal_plan_id: params[:meal_plan_id],
-    #   user_id: params[:user_id],
-    #   recipe_id: params[:recipe_id],
-    #   day_of_week: params[:day_of_week],
-    #   meal_type: params[:meal_type]
-    # )
-    # if meal.save
-    #   render json: meal.as_json
-    # else
-    #   render json: {message: meal.erros.full_messages}, status: :bad_request
-    # end
+    days_of_week = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+    meal_types = ["breakfast", "lunch", "dinner"]
 
-    a = 0
-    3.times do 
-      meal = Meal.new(
-        meal_plan_id: 1,
-        user_id: 1,
-        recipe_id: params[:monday][:meals][a][:id],
-        day_of_week: "monday",
-        meal_type: "test meal type"
-      )
-      meal.save
-      a += 1
-    end
-    
-    b = 0
-    3.times do 
-      meal = Meal.new(
-        meal_plan_id: 1,
-        user_id: 1,
-        recipe_id: params[:tuesday][:meals][b][:id],
-        day_of_week: "test day of week",
-        meal_type: "tuesday"
-      )
-      meal.save
-      b += 1
+    i = 0
+    7.times do 
+      j = 0
+      3.times do 
+        meal = Meal.new(
+          meal_plan_id: 1,
+          user_id: 1,
+          recipe_id: params[days_of_week[i]][:meals][j][:id],
+          day_of_week: days_of_week[i],
+          meal_type: meal_types[j]
+        )
+        meal.save
+        j += 1
+      end
+      i += 1
     end
 
-    c = 0
-    3.times do 
-      meal = Meal.new(
-        meal_plan_id: 1,
-        user_id: 1,
-        recipe_id: params[:wednesday][:meals][c][:id],
-        day_of_week: "test day of week",
-        meal_type: "wednesday"
-      )
-      meal.save
-      c += 1
-    end
-
-    d = 0
-    3.times do 
-      meal = Meal.new(
-        meal_plan_id: 1,
-        user_id: 1,
-        recipe_id: params[:thursday][:meals][d][:id],
-        day_of_week: "test day of week",
-        meal_type: "thursday"
-      )
-      meal.save
-      d += 1
-    end
-
-    e = 0
-    3.times do 
-      meal = Meal.new(
-        meal_plan_id: 1,
-        user_id: 1,
-        recipe_id: params[:friday][:meals][e][:id],
-        day_of_week: "test day of week",
-        meal_type: "friday"
-      )
-      meal.save
-      e += 1
-    end
-
-    f = 0
-    3.times do 
-      meal = Meal.new(
-        meal_plan_id: 1,
-        user_id: 1,
-        recipe_id: params[:saturday][:meals][f][:id],
-        day_of_week: "test day of week",
-        meal_type: "saturday"
-      )
-      meal.save
-      f += 1
-    end
-
-    g = 0
-    3.times do 
-      meal = Meal.new(
-        meal_plan_id: 1,
-        user_id: 1,
-        recipe_id: params[:sunday][:meals][g][:id],
-        day_of_week: "test day of week",
-        meal_type: "sunday"
-      )
-      meal.save
-      g += 1
+    meals = Meal.all 
+    meals.each do |meal|
+      meal.meal_plan_id = MealPlan.first.id
+      meal.save!
     end
   end
 
