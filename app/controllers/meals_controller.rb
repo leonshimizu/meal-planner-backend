@@ -41,4 +41,10 @@ class MealsController < ApplicationController
     render json: meal.as_json
   end
 
+  def show 
+    response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{params[:meal]}&apiKey=#{Rails.application.credentials.api_key_three}&includeNutrition=true")
+    meal = response.parse(:json)
+    render json: meal.as_json
+  end
+
 end

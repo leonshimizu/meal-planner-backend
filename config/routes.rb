@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get "/meals" => "meals#index"
   post "/meals" => "meals#create"
   get "/meals_generate" => "meals#generate"
+  get "/meals" => "meals#show"
 end
