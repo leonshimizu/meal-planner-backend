@@ -50,15 +50,15 @@ class MealsController < ApplicationController
     all_meals = []
 
     meals.each do |meal|
-      response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{meal.recipe_id}&apiKey=#{Rails.application.credentials.api_key_four}&includeNutrition=true")
+      response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{meal.recipe_id}&apiKey=#{Rails.application.credentials.api_key_one}&includeNutrition=true")
       meal_info = response.parse(:json)
-      all_meals << meal_info
+      all_meals << meal_info[0]
     end
     render json: all_meals.as_json
 
 
     # meal = Meal.first
-    # response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{meal.recipe_id}&apiKey=#{Rails.application.credentials.api_key_four}&includeNutrition=true")
+    # response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{meal.recipe_id}&apiKey=#{Rails.application.credentials.api_key_five}&includeNutrition=true")
     # meal_info = response.parse(:json)
     # render json: meal_info.as_json
   end
