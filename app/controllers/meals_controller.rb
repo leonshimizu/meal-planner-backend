@@ -41,10 +41,20 @@ class MealsController < ApplicationController
     render json: meal.as_json
   end
 
-  def show 
-    response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{params[:meal]}&apiKey=#{Rails.application.credentials.api_key_three}&includeNutrition=true")
-    meal = response.parse(:json)
-    render json: meal.as_json
+  def show_all 
+    # create loop of all meals
+    # make request to spoonacular for each meal to get all recipe info 
+    # store all data in an array and send that info to the frontend
+
+    meals = Meal.all
+    all_meals = []
+
+    meals.each do |meal|
+      response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{meal.recipe_id}&apiKey=#{Rails.application.credentials.api_key_three}&includeNutrition=true")
+      meal_info = response.parse(:json)
+      all_meals << meal_info
+    end
+    render json: all_meals.as_json
   end
 
 end

@@ -61,5 +61,5 @@ content-type: application/json
 ### Meals Generate
 GET http://localhost:3000/meals_generate?meal1=139875&meal2=159308&meal3=321254
 
-### Meals Save
-POST http://localhost:3000/meal_plans_generate
+### Meals Show All (Personal Meal Plan Page)
+GET http://localhost:3000/all_meals.json
