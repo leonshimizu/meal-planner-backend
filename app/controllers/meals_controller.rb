@@ -36,7 +36,7 @@ class MealsController < ApplicationController
   end
 
   def generate 
-    response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{params[:meal1]},#{params[:meal2]},#{params[:meal3]}&apiKey=#{Rails.application.credentials.api_key_two}&includeNutrition=true")
+    response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{params[:meal1]},#{params[:meal2]},#{params[:meal3]}&apiKey=#{Rails.application.credentials.api_key_seven}&includeNutrition=true")
     meal = response.parse(:json)
     render json: meal.as_json
   end
@@ -58,9 +58,14 @@ class MealsController < ApplicationController
 
 
     meal = Meal.first
-    response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{meal.recipe_id}&apiKey=#{Rails.application.credentials.api_key_two}&includeNutrition=true")
+    response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{meal.recipe_id}&apiKey=#{Rails.application.credentials.api_key_six}&includeNutrition=true")
     meal_info = response.parse(:json)
     render json: meal_info.as_json
   end
 
+  def extra 
+    response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{params[:meal_id]}&apiKey=#{Rails.application.credentials.api_key_six}&includeNutrition=true")
+    meal_info = response.parse(:json)
+    render json: meal_info.as_json
+  end
 end

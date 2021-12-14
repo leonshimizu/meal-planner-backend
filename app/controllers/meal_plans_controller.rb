@@ -22,7 +22,7 @@ class MealPlansController < ApplicationController
   end
 
   def generate 
-    response = HTTP.get("https://api.spoonacular.com/mealplanner/generate?timeFrame=week&apiKey=#{Rails.application.credentials.api_key_one}&targetCalories=#{params[:calories]}&diet=#{params[:diet]}&exlude=#{params[:allergies]}")
+    response = HTTP.get("https://api.spoonacular.com/mealplanner/generate?timeFrame=week&apiKey=#{Rails.application.credentials.api_key_six}&targetCalories=#{params[:calories]}&diet=#{params[:diet]}&exlude=#{params[:allergies]}")
     meal_plan = response.parse(:json)
     week = meal_plan["week"]
     render json: week.as_json
