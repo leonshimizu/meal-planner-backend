@@ -7,7 +7,7 @@ class MealPlansController < ApplicationController
   def create
     meal_plans = MealPlan.all 
     meal_plans.delete_all # deletes all meal plans before adding the new meal plan
-
+    
     meal_plan = MealPlan.new(
       diet: params[:diet],
       allergies: params[:allergies],
@@ -22,7 +22,7 @@ class MealPlansController < ApplicationController
   end
 
   def generate 
-    response = HTTP.get("https://api.spoonacular.com/mealplanner/generate?timeFrame=week&apiKey=#{Rails.application.credentials.api_key_six}&targetCalories=#{params[:calories]}&diet=#{params[:diet]}&exlude=#{params[:allergies]}")
+    response = HTTP.get("https://api.spoonacular.com/mealplanner/generate?timeFrame=week&apiKey=#{Rails.application.credentials.api_key_six}&targetCalories=#{params[:calories]}&diet=#{params[:diet].gsub(/\s+/, "")}&exlude=#{params[:allergies]}")
     meal_plan = response.parse(:json)
     week = meal_plan["week"]
     render json: week.as_json
