@@ -28,9 +28,9 @@ class MealsController < ApplicationController
       i += 1
     end
 
-    meals = Meal.all 
+    meals = Meal.where(user_id: current_user.id)
     meals.each do |meal|
-      meal.meal_plan_id = MealPlan.first.id
+      meal.meal_plan_id = MealPlan.where(user_id: current_user.id)[0].id
       meal.save!
     end
   end
