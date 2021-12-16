@@ -1,15 +1,12 @@
 class MealsController < ApplicationController
   def index 
-    # need to change this to show only the currrent user's meals
-
     meals = Meal.where(user_id: current_user.id)
     render json: meals.as_json
   end
 
   def create
     meals = Meal.where(user_id: current_user.id)
-
-    meals.delete_all # deletes all meals before adding the new meals
+    meals.delete_all 
 
     days_of_week = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
     meal_types = ["breakfast", "lunch", "dinner"]
@@ -20,7 +17,7 @@ class MealsController < ApplicationController
       3.times do 
         meal = Meal.new(
           meal_plan_id: 1,
-          user_id: 2,
+          user_id: current_user.id,
           recipe_id: params[days_of_week[i]][:meals][j][:id],
           day_of_week: days_of_week[i],
           meal_type: meal_types[j]
@@ -45,8 +42,6 @@ class MealsController < ApplicationController
   end
 
   def show_all 
-    # need to change this to show only the current user's meals
-
     meals = Meal.where(user_id: current_user.id)
     all_meals = []
 
@@ -57,8 +52,8 @@ class MealsController < ApplicationController
     end
     render json: all_meals.as_json
 
-
-    # meal = Meal.first
+    # code to test Personal Meal Plan Page with one request instead of 20
+    # meal = Meal.first  
     # response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{meal.recipe_id}&apiKey=#{Rails.application.credentials.api_key_six}&includeNutrition=true")
     # meal_info = response.parse(:json)
     # render json: meal_info.as_json
