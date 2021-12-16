@@ -2,14 +2,13 @@ class MealsController < ApplicationController
   def index 
     # need to change this to show only the currrent user's meals
 
-    meals = Meal.all
+    meals = Meal.where(user_id: current_user.id)
     render json: meals.as_json
   end
 
   def create
-    # meals = Meal.where(user_id = current) Need to change this to be the current user's meals
+    meals = Meal.where(user_id: current_user.id)
 
-    meals = Meal.all 
     meals.delete_all # deletes all meals before adding the new meals
 
     days_of_week = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
@@ -21,7 +20,7 @@ class MealsController < ApplicationController
       3.times do 
         meal = Meal.new(
           meal_plan_id: 1,
-          user_id: 1,
+          user_id: 2,
           recipe_id: params[days_of_week[i]][:meals][j][:id],
           day_of_week: days_of_week[i],
           meal_type: meal_types[j]
@@ -48,7 +47,7 @@ class MealsController < ApplicationController
   def show_all 
     # need to change this to show only the current user's meals
 
-    meals = Meal.all
+    meals = Meal.where(user_id: current_user.id)
     all_meals = []
 
     meals.each do |meal|
