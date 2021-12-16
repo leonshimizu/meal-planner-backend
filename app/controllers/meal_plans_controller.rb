@@ -5,6 +5,8 @@ class MealPlansController < ApplicationController
   end
 
   def create
+    # need to change this so it's the current user's meal plan - potentially might have to add a user_id to the meal plan table
+
     meal_plans = MealPlan.all 
     meal_plans.delete_all # deletes all meal plans before adding the new meal plan
     

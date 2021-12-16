@@ -1,10 +1,14 @@
 class MealsController < ApplicationController
   def index 
+    # need to change this to show only the currrent user's meals
+
     meals = Meal.all
     render json: meals.as_json
   end
 
   def create
+    # meals = Meal.where(user_id = current) Need to change this to be the current user's meals
+
     meals = Meal.all 
     meals.delete_all # deletes all meals before adding the new meals
 
@@ -42,6 +46,8 @@ class MealsController < ApplicationController
   end
 
   def show_all 
+    # need to change this to show only the current user's meals
+
     meals = Meal.all
     all_meals = []
 
