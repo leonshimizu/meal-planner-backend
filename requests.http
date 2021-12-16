@@ -1,4 +1,4 @@
-# @jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2Mzc3NzIyMjV9.ajPAezqNrJ_vY29hg6gYpSoDIHTvYZ1k4JMHV0e1EfI"
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDE3NTY1MTN9.IqqB4uPki6689mUNePTqc0mziCnOcVkCXN0I46OzGBM
 
 ### Users Index
 GET http://localhost:3000/users.json
@@ -48,6 +48,7 @@ Get http://localhost:3000/meals.json
 
 ### Meals Create
 POST http://localhost:3000/meals.json
+Authorization: Bearer {{ jwt }}
 content-type: application/json 
 
 {

@@ -14,7 +14,8 @@ class MealPlansController < ApplicationController
       diet: params[:diet],
       allergies: params[:allergies],
       timeFrame: params[:timeFrame],
-      calories: params[:calories]
+      calories: params[:calories],
+      user_id: 1 # need to make dynamic based on which user is signed in
     )
     if meal_plan.save
       render json: meal_plan.as_json
