@@ -36,7 +36,7 @@ class MealsController < ApplicationController
   end
 
   def generate 
-    response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{params[:meal1]},#{params[:meal2]},#{params[:meal3]}&apiKey=#{Rails.application.credentials.api_key_seven}&includeNutrition=true")
+    response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{params[:meal1]},#{params[:meal2]},#{params[:meal3]}&apiKey=#{Rails.application.credentials.api_key_one}&includeNutrition=true")
     meal = response.parse(:json)
     render json: meal.as_json
   end
