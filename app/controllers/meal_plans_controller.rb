@@ -33,6 +33,7 @@ class MealPlansController < ApplicationController
       response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{day[1]["meals"][0]["id"]}&apiKey=#{Rails.application.credentials.api_key_five}&includeNutrition=true")
       recipe_info = response.parse(:json)
       images << recipe_info[0]["image"]
+      binding.pry
       # pp day[1]["meals"][0]["id"]
     end
 
