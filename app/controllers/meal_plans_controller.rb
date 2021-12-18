@@ -30,11 +30,9 @@ class MealPlansController < ApplicationController
     images = []
 
     week.each do |day|
-      day[1]["meals"].each do |meal|
-        response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{meal["id"]}&apiKey=#{Rails.application.credentials.api_key_seven}&includeNutrition=true")
-        recipe_info = response.parse(:json)
-        images << recipe_info[0]["image"]
-      end
+      response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{day[1]["meals"][0]["id"]}&apiKey=#{Rails.application.credentials.api_key_five}&includeNutrition=true")
+      recipe_info = response.parse(:json)
+      images << recipe_info[0]["image"]
     end
 
     week["image_urls"] = images
