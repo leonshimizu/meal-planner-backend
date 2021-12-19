@@ -43,3 +43,5 @@ gem 'seed_dump'
 gem 'http'
 
 gem 'pry'
+
+gem 'csv'

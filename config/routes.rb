@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "/meals_generate" => "meals#generate"
   get "/all_meals" => "meals#show_all"
   get "/extra_info" => "meals#extra"
+  get "/meals_save" => "meals#save"
 
   get "/recipes_generate" => "recipes#generate"
 end

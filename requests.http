@@ -65,5 +65,8 @@ GET http://localhost:3000/meals_generate?meal1=139875&meal2=159308&meal3=321254
 ### Meals Show All (Personal Meal Plan Page)
 GET http://localhost:3000/all_meals.json
 
+### Meals Save
+GET http://localhost:3000/meals_save
+
 ### Recipes Generate
 GET http://localhost:3000/recipes_generate.json
