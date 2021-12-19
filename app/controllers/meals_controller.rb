@@ -87,4 +87,5 @@ class MealsController < ApplicationController
       format.html
       format.csv { send_data @meals.to_csv, filename: "users-#{Date.today}.csv" }
     end
+  end
 end
