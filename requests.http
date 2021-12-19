@@ -14,7 +14,7 @@ Content-Type: application/json
   "password_confirmation": "password"
 }
 
-### Sessions create (login) - broken at the moment
+### Sessions create (login)
 POST http://localhost:3000/sessions.json
 Content-Type: application/json
 
@@ -64,3 +64,6 @@ GET http://localhost:3000/meals_generate?meal1=139875&meal2=159308&meal3=321254
 
 ### Meals Show All (Personal Meal Plan Page)
 GET http://localhost:3000/all_meals.json
+
+### Recipes Generate
+GET http://localhost:3000/recipes_generate.json
