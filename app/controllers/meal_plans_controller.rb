@@ -23,7 +23,7 @@ class MealPlansController < ApplicationController
   end
 
   def generate 
-    response = HTTP.get("https://api.spoonacular.com/mealplanner/generate?timeFrame=week&apiKey=#{Rails.application.credentials.api_key_four}&targetCalories=#{params[:calories]}&diet=#{params[:diet].gsub(/\s+/, "")}&exlude=#{params[:allergies].gsub(/\s+/, "")}")
+    response = HTTP.get("https://api.spoonacular.com/mealplanner/generate?timeFrame=week&apiKey=#{Rails.application.credentials.api_key_five}&targetCalories=#{params[:calories]}&diet=#{params[:diet].gsub(/\s+/, "")}&exlude=#{params[:allergies].gsub(/\s+/, "")}")
     meal_plan = response.parse(:json)
     week = meal_plan["week"]
     
@@ -31,7 +31,7 @@ class MealPlansController < ApplicationController
 
     week.each do |day|
       day[1]["meals"].each do |meal|
-        response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{meal["id"]}&apiKey=#{Rails.application.credentials.api_key_seven}&includeNutrition=true")
+        response = HTTP.get("https://api.spoonacular.com/recipes/informationBulk?ids=#{meal["id"]}&apiKey=#{Rails.application.credentials.api_key_four}&includeNutrition=true")
         recipe_info = response.parse(:json)
         images << recipe_info[0]["image"]
       end
