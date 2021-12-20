@@ -70,3 +70,9 @@ GET http://localhost:3000/meals_save
 
 ### Recipes Generate
 GET http://localhost:3000/recipes_generate.json
+content-type: application/json 
+
+{
+  "query": "chicken",
+  "number": 1
+}
