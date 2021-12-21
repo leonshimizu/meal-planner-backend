@@ -64,28 +64,4 @@ class MealsController < ApplicationController
     meal_info = response.parse(:json)
     render json: meal_info.as_json
   end
-
-  # def save
-  #   file = "#{Rails.root}/public/meal_plan.csv"
-
-  #   # meal_plan = MealPlan.all
-  #   meals = Meal.all
-
-  #   headers = ["meal_plan_id", "user_id", "day_of_week", "meal_type", "recipe_id"]
-    
-  #   CSV.open(file, 'w', write_headers: true, headers: headers) do |writer|
-  #     meals.each do |meal| 
-  #       writer << [meal.id, meal.meal_plan_id, meal.user_id, meal.day_of_week, meal.meal_type, meal.recipe_id] 
-  #     end
-  #   end
-  # end
-
-  def save
-    @meals = Meal.all
-
-    respond_to do |format|
-      format.html
-      format.csv { send_data @meals.to_csv, filename: "users-#{Date.today}.csv" }
-    end
-  end
 end
